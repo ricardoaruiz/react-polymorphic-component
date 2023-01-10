@@ -1,4 +1,7 @@
-import { PolymorphicComponentPropsWithRef } from '../types/polymorphic-generic-types'
+import {
+  PolymorphicComponentPropsWithRef,
+  PolymorphicComponentRef,
+} from '../types/polymorphic-generic-types'
 
 export type Rainbow =
   | 'red'
@@ -9,13 +12,15 @@ export type Rainbow =
   | 'indigo'
   | 'violet'
 
-export type TextProps = {
+export type CustomProps = {
   color?: Rainbow | 'black'
 }
 
-export type Props<C extends React.ElementType> =
-  PolymorphicComponentPropsWithRef<C, TextProps>
+export type TextProps<C extends React.ElementType> =
+  PolymorphicComponentPropsWithRef<C, CustomProps>
+
+export type TextRef<C extends React.ElementType> = PolymorphicComponentRef<C>
 
 export type TextComponent = <C extends React.ElementType>(
-  props: Props<C>
+  props: TextProps<C>
 ) => React.ReactElement | null

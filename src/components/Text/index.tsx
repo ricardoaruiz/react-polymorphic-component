@@ -1,13 +1,11 @@
 import React from 'react'
 
-import { PolymorphicComponentRef } from '../types/polymorphic-generic-types'
-
-import { Props, TextComponent } from './types'
+import { TextComponent, TextProps, TextRef } from './types'
 
 export const Text: TextComponent = React.forwardRef(
   <C extends React.ElementType = 'span'>(
-    { as, style, color, children, ...props }: Props<C>,
-    ref?: PolymorphicComponentRef<C>
+    { as, style, color, children, ...props }: TextProps<C>,
+    ref?: TextRef<C>
   ) => {
     const Component = as || 'span'
 
